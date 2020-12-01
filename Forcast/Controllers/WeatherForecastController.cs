@@ -23,7 +23,7 @@ namespace Forcast.Controllers
         }
 
         [HttpGet]
-        public ActionResult Get()
+        public IActionResult Get()
         {
             var forecast = weather.Weathers;
             var newforcast = mapper.Map<IEnumerable<WeatherDTO>>(forecast);
