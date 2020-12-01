@@ -10,7 +10,11 @@ namespace Forcast
     {
         public WeatherProfile()
         {
-            CreateMap<WeatherDTO, WeatherForecast>();
+            CreateMap<WeatherForecast, WeatherDTO>()
+                .ForMember(dest=>dest.Summary,opt=>opt.MapFrom(src=>src.Summary))
+                .ForMember(dest => dest.TemperatureC, opt => opt.MapFrom(src => src.TemperatureC))
+                .ForMember(dest => dest.TemperatureF, opt => opt.MapFrom(src => src.TemperatureF))
+                .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date));
 
         }
     }
